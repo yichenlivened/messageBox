@@ -1,0 +1,172 @@
+$icon-font-path: '../fonts/';
+$green : #40A53F;
+$grayFont: #131313;
+$grayDivider: #E7E7E8;
+$grayBackground: #F9F9F9;
+$grayBackgroundHover: #F5F5F5;
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* mixin for multiline */
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: white){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+  &:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+.block-with-text {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: white);  
+}
+
+.btn-messages{
+  width:50px;
+  #box-messages {
+    margin-right:-120px;
+    width:300px;
+    overflow: hidden;
+
+    /* unread and new message btn */
+    .unreadNew{
+      height:30px;
+      border-bottom:1px solid $grayDivider;
+      .btn-unread{
+      display:inline-block;
+      color:$grayFont;
+      }
+      .btn-new{
+      display:inline-block;
+      position:relative;
+      float:right;
+      font-weight: 700;
+      color:$green;
+      }
+    }
+
+    a{
+      white-space:normal;
+    }
+    /* message */
+    .message{
+      position:relative;
+      height:100px;
+      border-bottom:1px solid $grayDivider;
+      .message-name{
+        font-weight: 700;
+        margin:5px 0;
+        overflow: hidden;
+      }
+      .message-content{
+        font-size: 12px;
+        margin:5px 0 5px 0;
+        @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 2, $bgColor: white);
+      }
+      .message-time{
+        font-size:12px;
+        margin:0;
+      }
+    }
+
+    .unread{
+      background:$grayBackground;
+      .message-name{
+        text-indent: 20px;
+      }
+    }
+
+    .message:hover{
+      background:$grayBackgroundHover;
+    }
+    /* see all btn */
+    .seeAll{
+      a{
+        font-weight: 700;
+      color:$green;
+      text-align:center;
+        }
+    }
+  }
+}
+
+.btn-setting{
+  width:120px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    background: $green;
+    position: absolute;
+}
+
+.dot-sm {
+    height: 6px;
+    width: 6px;
+    border-radius: 100%;
+    background: $green;
+    position: absolute;
+}
+
+.dot-topLeft{
+    top: 12px;
+    left: 20px;
+}
+
+.dot-topRight{
+    top: 12px;
+    right: 12px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
